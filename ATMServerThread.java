@@ -11,6 +11,15 @@ public class ATMServerThread extends Thread {
     private BufferedReader in;
     PrintWriter out;
     Scanner scanner;
+
+    private String[] langagues;
+    private String[] users;
+    private String[] message;
+    private Boolean validated;
+    private int balance;
+    private int password;
+    private String engagskod;
+
     public ATMServerThread(Socket socket) {
         super("ATMServerThread");
         this.socket = socket;
@@ -18,7 +27,7 @@ public class ATMServerThread extends Thread {
 
     private String readLine() throws IOException {
         String str = in.readLine();
-        System.out.println(""  + socket + " : " + str);
+    //    System.out.println(""  + socket + " : " + str);
         return str;
     }
 
@@ -72,7 +81,7 @@ public class ATMServerThread extends Thread {
             int value;
 
 
-/*
+              /*
             // Validate user:
             boolean userVaildated = false;
             while (userVaildated == false) {

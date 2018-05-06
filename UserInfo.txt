@@ -1,0 +1,31 @@
+USER1
+Kortnummer:
+12345
+Personlig Kod: 
+54321
+saldo:
+1091
+engång:
+05
+---------------------------------------
+USER2
+Kortnummer: 
+24680
+Personlig Kod: 
+54321
+saldo:
+631
+engång:
+01
+————————————————————————————————
+User3
+Kortnummer: 
+13579
+Personlig Kod: 
+54321
+saldo:
+1000
+engång:
+01
+---------------------------------------
+

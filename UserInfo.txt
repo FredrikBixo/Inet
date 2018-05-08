@@ -1,31 +1,27 @@
-USER1
-Kortnummer:
-12345
-Personlig Kod: 
-54321
-saldo:
+UserName/AccontNr
+1111
+Code: 
+2222
+Balance:
 1091
-engång:
+onetimecode:
 05
----------------------------------------
-USER2
-Kortnummer: 
-24680
-Personlig Kod: 
-54321
-saldo:
+
+UserName/AccontNr
+3333
+Code:
+4444
+Balance:
 631
-engång:
+onetimecode:
 01
-————————————————————————————————
-User3
-Kortnummer: 
-13579
-Personlig Kod: 
-54321
-saldo:
+
+UserName/AccontNr
+5555
+Code:
+6666
+Balance:
 1000
-engång:
+onetimecode:
 01
----------------------------------------
 

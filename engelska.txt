@@ -1,19 +1,13 @@
-Contacting bank...
-HERE IS THE WELCOME MESSAGE TO THE CLIENT!
-Account number:
-Password:
-Enter the first digit in security code:
-Thank you for using our service!
-Your balance is:
+Please enter your card number:
+
+Please enter your pin code:
+Invalid login, please try again!
+
+Main Menu: (1)Balance (2)Withdrawal  (3)Deposit (4)Exit
+
 Enter amount:
-1) Balance 2) Withdraw 3) Deposit 4) Quit.
-You don’t have enough money!
-Incorrect Code!
-Incorrect Password or Account number!
-Dollar
-Goodbye!
-
-Ads.     
-
-Correct
-Enter the second digit in security code:
+Invalid amount. Please enter a new amount:
+Current balance:
+ sek
+Invalid transaction!
+Good Bye!

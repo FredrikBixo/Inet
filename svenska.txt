@@ -1,20 +1,14 @@
-Kontaktar banken...
-HÄR ÄR VÄLKOMSTMEDDELANDET SOM BANKEN KAN UPPDATERA!
-Kortnummer;
-Lösenord:
-Skriv in första siffran i säkerhetskoden:
-Tack för att du använder vår bank!
-Din saldo är:
+Ange ditt kortnummer:
+
+Pinkod:
+Ogiltig försök, försök igen:
+Validering godkänd!
+
+Vänligen välja: (1)Saldo (2)Uttag (3)Insättning (4)Logga ut
+
 Ange summa:
-1) Saldo 2) Uttag 3) Insättning 4) Avsluta.
-Du har inte tillräckligt med pengar!
-Fel säkerhetskod!
-Fel lösenord/kontonummer!
-Kronor
-Hejdå!
-
-REKLAM!            
-
-Rätt
-Skriv in andra siffran i säkerhetskoden:
-
+Summan är ogiltig. Ange ny summa:
+Ditt saldo:
+ kronor
+Ogiltigt val!
+Hej då!

@@ -15,6 +15,8 @@ public class ATMClient {
         BufferedReader in = null;
         String adress = "";
 
+
+
         try {
             adress = args[0];
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -37,7 +39,81 @@ public class ATMClient {
         System.out.println("Contacting bank ... ");
         System.out.println(in.readLine());
 
+        Scanner LangScanner = new Scanner(System.in);
+            boolean langSelected = false;
+            while(langSelected == false){
+                System.out.print("> ");
+                int langOption = LangScanner.nextInt();
+                //skickar det valda språket till servern
+                out.println(langOption);
+                langSelected = true;
+            }
+
         Scanner scanner = new Scanner(System.in);
+
+        // enter cardNumber
+        long cardNumber;
+        long pinCode;
+
+        Boolean fullyValidated = false;
+
+        while (!fullyValidated) {
+
+          System.out.println(in.readLine());
+          boolean cardNumberDone = false;
+          boolean pinCodeDone = false;
+
+        //while (!cardNumberDone) {
+            System.out.print("> ");
+            cardNumber = scanner.nextInt();
+            // Send the input card number to the server
+            out.println(cardNumber);
+            // wait until it received token from server.
+            //Boolean line =  Boolean.parseBoolean(in.readLine());
+            // System.out.println(line);
+            // if (line == true) {
+            // cardNumberDone = true;
+            // } else {
+            //  System.out.println("Wrong pinCode, try again... ");
+            // }
+          //  if (!cardNumberDone)
+            //    System.out.println(lines.get(in.readInt()));
+      //  }
+
+
+        // Ask to enter pinCode until clients entered the right one
+
+          System.out.println(in.readLine());
+
+      //  while (!pinCodeDone) {
+          System.out.print("> ");
+          pinCode = scanner.nextInt();
+          // Send the input card number to the server
+          out.println(pinCode);
+          // wait until it received token from server.
+          //Boolean line =  Boolean.parseBoolean(in.readLine());
+      //    System.out.println(line);
+        //  if (line == true) {
+            pinCodeDone = true;
+          //} else {
+          //  System.out.println("Wrong pinCode, try again... ");
+      //  }
+          //  if (!pinCodeDone)
+              //  System.out.println(lines.get(in.readInt()));
+    //    }
+        System.out.println(in.readLine());
+        Boolean line =  Boolean.parseBoolean(in.readLine());
+        System.out.println(line);
+        if (line == true) {
+          fullyValidated = true;
+        } else {
+        //  System.out.println("Wrong user, try again... ");
+        }
+
+      }
+
+      //  Scanner scanner1 = scanner.nextInt();
+        System.out.println(in.readLine());
         System.out.print("> ");
         int menuOption = scanner.nextInt();
         int userInput;
@@ -66,6 +142,8 @@ public class ATMClient {
                     out.println(menuOption);
                 }
         }
+
+
 
         out.close();
         in.close();

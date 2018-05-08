@@ -1,9 +1,1 @@
-
-
-
-WWelcome to Bank! (1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit
-
-
-Hello, world!
-
-321312412341234 4322  4324
+Choose language: (1)Svenska, (2)engelska

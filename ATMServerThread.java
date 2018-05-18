@@ -101,13 +101,14 @@ public class ATMServerThread extends Thread {
 
 
 
-    private void saveSaldoTouser(String user, String balance) {
+    private void saveSaldoTouser(String user, int balance) {
 
-
+      users[this.balance] = Integer.toString(balance);
+      String joined2 = String.join("\n", users);
 
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("UserInfo.txt"));
-      writer.write(balance);
+      writer.write(joined2);
       writer.close();
     } catch (IOException e){
           e.printStackTrace();
@@ -125,14 +126,14 @@ public class ATMServerThread extends Thread {
 
             String inputLine, outputLine;
 
-            String chooseLang = Files.readAllLines(Paths.get("textGUI.txt")).get(0);
-            out.println(chooseLang); //skickar språkval
+
+            out.println(0); //skickar språkval
             input = in.readLine();
             int lang = Integer.parseInt(input);
             this.prompts = getLanguage(lang); //hämtar valt språk
 
             String currentUser = "USER1";
-            
+
             int balance = 1000;
             int value;
 
@@ -168,7 +169,7 @@ public class ATMServerThread extends Thread {
             while (!fullyValidated) {
 
 
-              out.println(prompts[0]);
+              out.println(0);
               boolean cardNumberDone = false;
             // Run the language-choosing process until clients
             //have chosen an available language
@@ -181,7 +182,7 @@ public class ATMServerThread extends Thread {
 
 
 
-                out.println(prompts[2]);
+                out.println(2);
                   boolean pinCodeDone = false;
 
             // Run the language-choosing process until clients
@@ -197,9 +198,12 @@ public class ATMServerThread extends Thread {
 
             fullyValidated = validateUser(inputCardNumber,inputPinCode,users);
             if (fullyValidated) {
-            out.println(prompts[4]);
+            out.println(4);
+
+            // user logged in, get balance;
+            balance = Integer.parseInt(users[this.balance]);
           } else {
-            out.println(prompts[3]);
+            out.println(3);
           }
             System.out.println(fullyValidated);
 
@@ -212,31 +216,41 @@ public class ATMServerThread extends Thread {
 
           System.out.println("worked!!");
 
-          out.println(prompts[6]);
+          out.println(6);
 
           //  out.println(1);
             inputLine = in.readLine();
 
             int choise = Integer.parseInt(inputLine);
 
+            int maxOptions = 5;
 
-            while (choise != 4) {
+            while (choise != 5) {
                 int deposit = 1;
                 switch (choise) {
                 case 2:
                     deposit = -1;
                 case 3:
-                    out.println("Enter amount: ");
+                    out.println(8);
                     inputLine = readLine();
                     value = Integer.parseInt(inputLine);
                     balance += deposit * value;
                 case 1:
-                    out.println("Current balance is " + balance + " dollars");
-                    out.println("(1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit");
+                  //  out.println("Current balance is " + balance + " dollars");
+                  //  out.println("(1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit");
+                    out.println(balance);
+                    out.println(10);
+                    out.println(6);
+
                     inputLine=readLine();
                     choise = Integer.parseInt(inputLine);
                     break;
-                case 4:
+                  case 4:
+                      inputLine=readLine();
+                      System.out.println(inputLine);
+                      choise = Integer.parseInt(inputLine);
+                      break;
+                case 5:
                     break;
                 default:
                     break;
@@ -244,6 +258,7 @@ public class ATMServerThread extends Thread {
             }
 
             // saveData(currentUser, Integer.toString(balance));
+            saveSaldoTouser("",balance);
 
             out.println("Good Bye");
             out.close();

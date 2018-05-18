@@ -3,6 +3,7 @@ Please enter your card number:
 Please enter your pin code:
 Invalid login, please try again!
 
+
 Main Menu: (1)Balance (2)Withdrawal  (3)Deposit (4)Exit
 
 Enter amount:

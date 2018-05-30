@@ -4,7 +4,7 @@ Veuillez entrer votre code PIN:
 Connexion non valide, veuillez réessayer!
 
 
-Menu principal: (1) Solde (2) Retrait (3) Dépôt (4) Quitter
+Menu principal: (1) Solde (2) Retrait (3) Dépôt (4)Changer de langue (5) Quitter
 
 Entrer le montant:
 Montant invalide. Veuillez entrer un nouveau montant:

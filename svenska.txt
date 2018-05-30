@@ -4,7 +4,7 @@ Pinkod:
 Ogiltig försök, försök igen:
 Validering godkänd!
 
-Vänligen välja: (1)Saldo (2)Uttag (3)Insättning (4)Logga ut
+Vänligen välja: (1)Saldo (2)Uttag (3)Insättning (4)Byt språk (5)Logga ut
 
 Ange summa:
 Summan är ogiltig. Ange ny summa:

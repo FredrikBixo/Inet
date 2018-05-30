@@ -11,7 +11,7 @@ public class ATMServerThread extends Thread {
     private BufferedReader in;
     PrintWriter out;
     Scanner scanner;
-
+    // declaring variables
     String input;
     private String[] langagues;
     private String[] users;
@@ -20,7 +20,6 @@ public class ATMServerThread extends Thread {
     private Boolean validated;
     private int balance;
     private int password;
-    private String engagskod;
     private String[] prompts;
 
     public ATMServerThread(Socket socket) {
@@ -30,10 +29,13 @@ public class ATMServerThread extends Thread {
 
     private String readLine() throws IOException {
         String str = in.readLine();
-      //  System.out.println(""  + socket + " : " + str);
         return str;
     }
-
+    /**
+    function name: getLanguage
+    input: integer (from user)
+    return type: Arraylist
+    **/
     private String[] getLanguage(int inputNr) throws IOException{
         String out = null;
         List<String> lines = new ArrayList<String>();
@@ -63,7 +65,11 @@ public class ATMServerThread extends Thread {
     }
 
 
-
+    /**
+    function name: validateUser
+    input: int, int, Array
+    return type: Boolean
+    **/
     private boolean validateUser(int userName, int passWord, String[] users) {
         if(userName == Integer.parseInt(users[1])){
             if(passWord != Integer.parseInt(users[3])) {
@@ -85,6 +91,11 @@ public class ATMServerThread extends Thread {
         return false;
     }
 
+    /**
+    function name: getUsers
+    input: N/A
+    Return type: Array
+    **/
     private String[] getUsers() throws IOException{
         String out = null;
         List<String> lines = new ArrayList<String>();
@@ -100,9 +111,12 @@ public class ATMServerThread extends Thread {
     }
 
 
-
+    /**
+    function name: saveSaldoTouser
+    input: int, int
+    return type: N/A
+    **/
     private void saveSaldoTouser(String user, int balance) {
-
       users[this.balance] = Integer.toString(balance);
       String joined2 = String.join("\n", users);
 
@@ -117,124 +131,72 @@ public class ATMServerThread extends Thread {
     }
 
     public void run(){
-
         try {
-
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader
                 (new InputStreamReader(socket.getInputStream()));
-
             String inputLine, outputLine;
 
-
-            out.println(0); //skickar språkval
+            out.println(0); //sends language
             input = in.readLine();
+            //input representing chosen language
             int lang = Integer.parseInt(input);
-            this.prompts = getLanguage(lang); //hämtar valt språk
-
-            String currentUser = "USER1";
-
-            int balance = 1000;
+            this.prompts = getLanguage(lang); //gets chosen language
             int value;
-
             users = getUsers();
-
-            /*
-            // Validate user:
-            boolean userVaildated = false;
-            while (userVaildated == false) {
-            out.println("Enter cardNumber:");
-            inputLine = readLine();
-
-            out.println("Enter pin:");
-            inputLine = readLine();
-
-            if (inputLine == "1" && inputLine == "1") {
-              userVaildated = true;
-              break;
-            } else {
-                out.println("failed, try again");
-            }
-
-            }
-
-            */
-
 
             int inputCardNumber = 0;
             int inputPinCode = 0;
-
+            //checks if validated
             Boolean fullyValidated = false;
 
+
+            // Run the language-choosing process until clients have chosen an available language
             while (!fullyValidated) {
-
-
-              out.println(0);
-              boolean cardNumberDone = false;
-            // Run the language-choosing process until clients
-            //have chosen an available language
-          //  while (!cardNumberDone) {
+                //ask to enter cardNr
+                out.println(0);
+                boolean cardNumberDone = false;
+                //parsing user input
                 inputCardNumber = Integer.parseInt(in.readLine());
                 System.out.println(inputCardNumber);
-              //    out.println(true);
-            //    if (inputCardNumber == 1) {
-                  cardNumberDone = true;
-
-
-
+                cardNumberDone = true;
+                //ask to enter pinCode
                 out.println(2);
-                  boolean pinCodeDone = false;
-
-            // Run the language-choosing process until clients
-            //have chosen an available language
-            //while (!pinCodeDone) {
+                boolean pinCodeDone = false;
+                //parsing user input
                 inputPinCode = Integer.parseInt(in.readLine());
                 System.out.println(inputPinCode);
-                //  out.println(true);
-            //    if (inputPinCode == 1) {
-                  pinCodeDone = true;
-              //  }
-
-
+                pinCodeDone = true;
+            // uses the parsed user input as arguments in the fullyValidated function to check if cardNr and pinCode matches
             fullyValidated = validateUser(inputCardNumber,inputPinCode,users);
             if (fullyValidated) {
             out.println(4);
-
             // user logged in, get balance;
             balance = Integer.parseInt(users[this.balance]);
           } else {
             out.println(3);
           }
             System.out.println(fullyValidated);
-
-
             out.println(fullyValidated);
-
           }
-
-
-
-          System.out.println("worked!!");
-
+          //sends integer client to make it print the menu
           out.println(6);
+          inputLine = in.readLine();
+          //waiting for user input
+          int choise = Integer.parseInt(inputLine);
 
-          //  out.println(1);
-            inputLine = in.readLine();
-
-            int choise = Integer.parseInt(inputLine);
-
-            int maxOptions = 5;
-
-            while (choise != 5) {
+          int maxOptions = 5;
+          while (choise != 5) {
                 int deposit = 1;
                 switch (choise) {
                 case 2:
                     deposit = -1;
                 case 3:
+                    //sends integer to tell the server to print enter amount
                     out.println(8);
                     inputLine = readLine();
                     value = Integer.parseInt(inputLine);
-                  if (balance + deposit * value >= 0) {
+                    // logic in order to deposit money
                     balance += deposit * value;
                   //  out.println(8);
                   } else {
@@ -242,13 +204,11 @@ public class ATMServerThread extends Thread {
                     out.println(2);
                   }
                 case 1:
-                  //  out.println("Current balance is " + balance + " dollars");
-                  //  out.println("(1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit");
-                    // System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                    //tells the server to print balance and SEK as tail
                     out.println(balance);
                     out.println(10);
                     out.println(6);
-
+                    //waiting for next input
                     inputLine=readLine();
                     choise = Integer.parseInt(inputLine);
                     break;
@@ -263,8 +223,7 @@ public class ATMServerThread extends Thread {
                     break;
                 }
             }
-
-            // saveData(currentUser, Integer.toString(balance));
+            //save balance
             saveSaldoTouser("",balance);
 
             out.println("Good Bye");

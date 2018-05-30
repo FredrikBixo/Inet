@@ -234,10 +234,17 @@ public class ATMServerThread extends Thread {
                     out.println(8);
                     inputLine = readLine();
                     value = Integer.parseInt(inputLine);
+                  if (balance + deposit * value >= 0) {
                     balance += deposit * value;
+                  //  out.println(8);
+                  } else {
+                //    System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                    out.println(2);
+                  }
                 case 1:
                   //  out.println("Current balance is " + balance + " dollars");
                   //  out.println("(1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit");
+                    // System.out.println(prompts[Integer.parseInt(in.readLine())]);
                     out.println(balance);
                     out.println(10);
                     out.println(6);

@@ -176,8 +176,21 @@ public class ATMClient {
                   out.println(userInput); // entered amount
 
                   int i = Integer.parseInt(in.readLine());
+                  System.out.println(i);
+
+                  if (i != 2) {
                   System.out.println(prompts[Integer.parseInt(in.readLine())] + Integer.toString(i));
                   System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                } else {
+                  System.out.println("Error");
+                  //System.out.println(Integer.parseInt(in.readLine()));
+                  int d = Integer.parseInt(in.readLine());
+                  System.out.println(prompts[Integer.parseInt(in.readLine())] + Integer.toString(d));
+                  System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                  System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                  // System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                }
+
 
                   System.out.print("> ");
                   menuOption = scanner.nextInt();
@@ -189,9 +202,14 @@ public class ATMClient {
                   userInput = scanner.nextInt();
                   out.println(userInput); // entered amount
 
+                //  System.out.println(prompts[Integer.parseInt(in.readLine())]);
                   int i = Integer.parseInt(in.readLine());
+                //  System.out.println(i);
+
+              //    if (i != 2) {
                   System.out.println(prompts[Integer.parseInt(in.readLine())] + Integer.toString(i));
                   System.out.println(prompts[Integer.parseInt(in.readLine())]);
+
 
                   System.out.print("> ");
                   menuOption = scanner.nextInt();
@@ -199,8 +217,8 @@ public class ATMClient {
 
                 } else if(menuOption == 4) {
 
-                  System.out.println(chooseLang);
-                  Scanner LangScanner2 = new Scanner(System.in);
+                      System.out.println(chooseLang);
+                      Scanner LangScanner2 = new Scanner(System.in);
                       boolean langSelected2 = false;
                       while(langSelected2 == false){
                           System.out.print("> ");
@@ -210,7 +228,8 @@ public class ATMClient {
                           out.println(langOption2);
 
                          prompts = ATMClient.getLanguage(langOption2);
-                          langSelected2 = true;
+                         langSelected2 = true;
+
                       }
 
                       System.out.println(prompts[6]);
@@ -222,8 +241,6 @@ public class ATMClient {
                       out.println(menuOption);
 
                       in.readLine();
-
-
 
 
                 }

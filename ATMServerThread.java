@@ -196,6 +196,7 @@ public class ATMServerThread extends Thread {
                     out.println(8);
                     inputLine = readLine();
                     value = Integer.parseInt(inputLine);
+                  if(  balance + deposit * value > 0) {
                     // logic in order to deposit money
                     balance += deposit * value;
                   //  out.println(8);

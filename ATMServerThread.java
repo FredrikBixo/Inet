@@ -30,7 +30,6 @@ public class ATMServerThread extends Thread {
 
     private String readLine() throws IOException {
         String str = in.readLine();
-      //  System.out.println(""  + socket + " : " + str);
         return str;
     }
 
@@ -138,64 +137,26 @@ public class ATMServerThread extends Thread {
             int value;
 
             users = getUsers();
-
-            /*
-            // Validate user:
-            boolean userVaildated = false;
-            while (userVaildated == false) {
-            out.println("Enter cardNumber:");
-            inputLine = readLine();
-
-            out.println("Enter pin:");
-            inputLine = readLine();
-
-            if (inputLine == "1" && inputLine == "1") {
-              userVaildated = true;
-              break;
-            } else {
-                out.println("failed, try again");
-            }
-
-            }
-
-            */
-
-
+           
             int inputCardNumber = 0;
             int inputPinCode = 0;
 
             Boolean fullyValidated = false;
-
+            
+           
+            // Run the language-choosing process until clients have chosen an available language
             while (!fullyValidated) {
-
-
-              out.println(0);
-              boolean cardNumberDone = false;
-            // Run the language-choosing process until clients
-            //have chosen an available language
-          //  while (!cardNumberDone) {
+                out.println(0);
+                boolean cardNumberDone = false;
                 inputCardNumber = Integer.parseInt(in.readLine());
                 System.out.println(inputCardNumber);
-              //    out.println(true);
-            //    if (inputCardNumber == 1) {
-                  cardNumberDone = true;
-
-
-
+                cardNumberDone = true;
                 out.println(2);
-                  boolean pinCodeDone = false;
-
-            // Run the language-choosing process until clients
-            //have chosen an available language
-            //while (!pinCodeDone) {
+                boolean pinCodeDone = false;
                 inputPinCode = Integer.parseInt(in.readLine());
                 System.out.println(inputPinCode);
-                //  out.println(true);
-            //    if (inputPinCode == 1) {
-                  pinCodeDone = true;
-              //  }
-
-
+                pinCodeDone = true;
+               
             fullyValidated = validateUser(inputCardNumber,inputPinCode,users);
             if (fullyValidated) {
             out.println(4);
@@ -206,26 +167,17 @@ public class ATMServerThread extends Thread {
             out.println(3);
           }
             System.out.println(fullyValidated);
-
-
             out.println(fullyValidated);
-
           }
 
-
-
-          System.out.println("worked!!");
-
+  
           out.println(6);
+          inputLine = in.readLine();
+           
+          int choise = Integer.parseInt(inputLine);
 
-          //  out.println(1);
-            inputLine = in.readLine();
-
-            int choise = Integer.parseInt(inputLine);
-
-            int maxOptions = 5;
-
-            while (choise != 5) {
+          int maxOptions = 5;
+          while (choise != 5) {
                 int deposit = 1;
                 switch (choise) {
                 case 2:
@@ -236,8 +188,6 @@ public class ATMServerThread extends Thread {
                     value = Integer.parseInt(inputLine);
                     balance += deposit * value;
                 case 1:
-                  //  out.println("Current balance is " + balance + " dollars");
-                  //  out.println("(1)Balance, (2)Withdrawal, (3)Deposit, (4)Exit");
                     out.println(balance);
                     out.println(10);
                     out.println(6);
@@ -256,8 +206,6 @@ public class ATMServerThread extends Thread {
                     break;
                 }
             }
-
-            // saveData(currentUser, Integer.toString(balance));
             saveSaldoTouser("",balance);
 
             out.println("Good Bye");

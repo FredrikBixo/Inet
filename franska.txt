@@ -2,7 +2,7 @@ Veuillez entrer votre numéro de carte:
 
 Veuillez entrer votre code PIN:
 Connexion non valide, veuillez réessayer!
-
+Validation approuvée!
 
 Menu principal: (1) Solde (2) Retrait (3) Dépôt (4)Changer de langue (5) Quitter
 

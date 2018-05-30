@@ -20,25 +20,35 @@ public class ATMClient {
     private static String[] getLanguage(int inputNr) throws IOException{
         String out = null;
         List<String> lines = new ArrayList<String>();
-            if(inputNr == 1){
-        try(BufferedReader buffer = new BufferedReader(new FileReader("svenska.txt"))){
-            while((out = buffer.readLine()) != null){
-                lines.add(out);
+        if(inputNr == 1){
+            try(BufferedReader buffer = new BufferedReader(new FileReader("svenska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
             }
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
          return lines.toArray(new String[lines.size()]);
-            }
+        }
         else if(inputNr == 2){
-        try(BufferedReader buffer = new BufferedReader(new FileReader("engelska.txt"))){
-            while((out = buffer.readLine()) != null){
-                lines.add(out);
+            try(BufferedReader buffer = new BufferedReader(new FileReader("engelska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
             }
-        } catch(IOException e) {
-            e.printStackTrace();
+        return lines.toArray(new String[lines.size()]);
         }
-         return lines.toArray(new String[lines.size()]);
+        else if(inputNr == 3) {
+            try(BufferedReader buffer = new BufferedReader(new FileReader("franska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            return lines.toArray(new String[lines.size()]);
         }
         else {
             return lines.toArray(new String[lines.size()]);
@@ -95,7 +105,7 @@ public class ATMClient {
 
                //gets the chosen language file
                prompts = ATMClient.getLanguage(langOption);
-                langSelected = true;
+               langSelected = true;
             }
 
         Scanner scanner = new Scanner(System.in);
@@ -180,7 +190,7 @@ public class ATMClient {
                   int d = Integer.parseInt(in.readLine());
                   System.out.println(prompts[Integer.parseInt(in.readLine())] + Integer.toString(d));
                   System.out.println(prompts[Integer.parseInt(in.readLine())]);
-                  System.out.println(prompts[Integer.parseInt(in.readLine())]);
+                  
                   // System.out.println(prompts[Integer.parseInt(in.readLine())]);
                 }
 
@@ -225,6 +235,7 @@ public class ATMClient {
                           System.out.print("> ");
                           // integer representing the chosen language
                           int langOption2 = LangScanner2.nextInt();
+                          
                           // sends chosen language to the server
                           out.println(langOption2);
                          //updating array

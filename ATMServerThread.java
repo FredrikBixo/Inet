@@ -18,6 +18,7 @@ public class ATMServerThread extends Thread {
     private List<String> lines;
     private List<String> userInfo;
     private Boolean validated;
+    private int balanceIndex;
     private int balance;
     private int password;
     private String[] prompts;
@@ -39,25 +40,35 @@ public class ATMServerThread extends Thread {
     private String[] getLanguage(int inputNr) throws IOException{
         String out = null;
         List<String> lines = new ArrayList<String>();
-            if(inputNr == 1){
-        try(BufferedReader buffer = new BufferedReader(new FileReader("svenska.txt"))){
-            while((out = buffer.readLine()) != null){
-                lines.add(out);
+        if(inputNr == 1){
+            try(BufferedReader buffer = new BufferedReader(new FileReader("svenska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
             }
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
          return lines.toArray(new String[lines.size()]);
-            }
+        }
         else if(inputNr == 2){
-        try(BufferedReader buffer = new BufferedReader(new FileReader("engelska.txt"))){
-            while((out = buffer.readLine()) != null){
-                lines.add(out);
+            try(BufferedReader buffer = new BufferedReader(new FileReader("engelska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
             }
-        } catch(IOException e) {
-            e.printStackTrace();
+        return lines.toArray(new String[lines.size()]);
         }
-         return lines.toArray(new String[lines.size()]);
+        else if(inputNr == 3) {
+            try(BufferedReader buffer = new BufferedReader(new FileReader("franska.txt"))){
+                while((out = buffer.readLine()) != null){
+                    lines.add(out);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            return lines.toArray(new String[lines.size()]);
         }
         else {
             return lines.toArray(new String[lines.size()]);
@@ -75,7 +86,7 @@ public class ATMServerThread extends Thread {
             if(passWord != Integer.parseInt(users[3])) {
                 return false;
             }
-        this.balance = 5;
+        this.balanceIndex = 5;
         this.password = 7;
 
         return true;
@@ -84,7 +95,7 @@ public class ATMServerThread extends Thread {
             if(passWord != Integer.parseInt(users[12])){
                 return false;
             }
-        this.balance = 14;
+        this.balanceIndex = 14;
         this.password = 16;
         return true;
         }
@@ -117,7 +128,9 @@ public class ATMServerThread extends Thread {
     return type: N/A
     **/
     private void saveSaldoTouser(String user, int balance) {
-      users[this.balance] = Integer.toString(balance);
+    System.out.print(this.balanceIndex);
+    System.out.print(this.balance);
+      users[this.balanceIndex] = Integer.toString(balance);
       String joined2 = String.join("\n", users);
 
     try {
@@ -172,7 +185,7 @@ public class ATMServerThread extends Thread {
             if (fullyValidated) {
             out.println(4);
             // user logged in, get balance;
-            balance = Integer.parseInt(users[this.balance]);
+            balance = Integer.parseInt(users[this.balanceIndex]);
           } else {
             out.println(3);
           }

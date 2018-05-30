@@ -2,7 +2,7 @@ Please enter your card number:
 
 Please enter your pin code:
 Invalid login, please try again!
-
+Validation approved!
 
 Main Menu: (1)Balance (2)Withdrawal  (3)Deposit (4)Change Language (5) Exit
 

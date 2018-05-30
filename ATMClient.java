@@ -7,7 +7,7 @@ import java.util.*;
 import java.nio.file.*;
 
 /**
-   @author Snilledata
+   @author Fredrik Bixo, Carl Hultberg built on @snilledata code
 */
 public class ATMClient {
     private static int connectionPort = 8990;
@@ -103,56 +103,33 @@ public class ATMClient {
           boolean cardNumberDone = false;
           boolean pinCodeDone = false;
 
-        //while (!cardNumberDone) {
-            System.out.print("> ");
-            cardNumber = scanner.nextInt();
-            // Send the input card number to the server
-            out.println(cardNumber);
-            // wait until it received token from server.
-            //Boolean line =  Boolean.parseBoolean(in.readLine());
-            // System.out.println(line);
-            // if (line == true) {
-            // cardNumberDone = true;
-            // } else {
-            //  System.out.println("Wrong pinCode, try again... ");
-            // }
-          //  if (!cardNumberDone)
-            //    System.out.println(lines.get(in.readInt()));
-      //  }
-
-
-        // Ask to enter pinCode until clients entered the right one
+          System.out.print("> ");
+          cardNumber = scanner.nextInt();
+          // Send the input card number to the server
+          out.println(cardNumber);
+          // Ask to enter pinCode until clients entered the right one
 
           System.out.println(prompts[Integer.parseInt(in.readLine())]);
 
-      //  while (!pinCodeDone) {
+     
           System.out.print("> ");
           pinCode = scanner.nextInt();
           // Send the input card number to the server
           out.println(pinCode);
-          // wait until it received token from server.
-          //Boolean line =  Boolean.parseBoolean(in.readLine());
-      //    System.out.println(line);
-        //  if (line == true) {
-            pinCodeDone = true;
-          //} else {
-          //  System.out.println("Wrong pinCode, try again... ");
-      //  }
-          //  if (!pinCodeDone)
-              //  System.out.println(lines.get(in.readInt()));
-    //    }
-        System.out.println(prompts[Integer.parseInt(in.readLine())]);
-        Boolean line =  Boolean.parseBoolean(in.readLine());
-        System.out.println(line);
-        if (line == true) {
-          fullyValidated = true;
-        } else {
-        //  System.out.println("Wrong user, try again... ");
-        }
+   
+          pinCodeDone = true;
+        
+          System.out.println(prompts[Integer.parseInt(in.readLine())]);
+          Boolean line =  Boolean.parseBoolean(in.readLine());
+          System.out.println(line);
+          if (line == true) {
+            fullyValidated = true;
+          } else {
+         // lägg till felmeddelande gällande inlogg om vi fucking pallar
+          }
 
       }
-
-      //  Scanner scanner1 = scanner.nextInt();
+       
         System.out.println(prompts[Integer.parseInt(in.readLine())]);
         System.out.print("> ");
         int menuOption = scanner.nextInt();
@@ -216,16 +193,12 @@ public class ATMClient {
                       System.out.println(prompts[6]);
                       System.out.print("> ");
                       menuOption = scanner.nextInt();
-                    //  int userInput;
+                    
 
                     // wait until server response
                       out.println(menuOption);
 
                       in.readLine();
-
-
-
-
                 }
         }
 
